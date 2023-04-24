@@ -9,11 +9,13 @@ let billedeTelefonDerRinger;
 let billedeBurgerikon;
 let billedeTelefon;
 let billedRødTelefon;
+let billedHjem;
 let font;
 let fontsize = 25;
 let knapSOS;
 let knapTelefon;
 let knapBurgerikon;
+let knapHjem;
 let currentPage = 1;
 let numberOfPages = 2;
 
@@ -23,6 +25,7 @@ function preload() {
   billedeBurgerikon = loadImage("billeder/burger_ikon.png");
   billedeTelefonDerRinger = loadImage("billeder/telefon_der_ringer.png");
   billedRødTelefon = loadImage("billeder/rød_telefon.png");
+  billedHjem = loadImage("billeder/hjem.png");
 }
 
 function opretKnapper() {
@@ -56,6 +59,16 @@ function opretKnapper() {
   knapBurgerikon.style("background-size", "100% 100%");
   knapBurgerikon.mousePressed(knapBurgerikonKlik);
   knapBurgerikon.show();
+
+  knapHjem = createButton(" ");
+  knapHjem.position(width / 2 - 30, height - 150);
+  knapHjem.size(60, 60);
+  knapHjem.style("background-color", "transparent");
+  knapHjem.style("border", "none");
+  knapHjem.style("background-image", "url(" + "billeder/hjem.png" + ")");
+  knapHjem.style("background-size", "100% 100%");
+  knapHjem.mousePressed(knapHjemKlik);
+  knapHjem.hide();
 }
 
 function setup() {
@@ -78,6 +91,16 @@ function draw() {
     drawPage2();
   } else if (currentPage == 3) {
     drawPage3();
+  } else if (currentPage == 3) {
+    drawPage3();
+  } else if (currentPage == 4) {
+    drawPage4();
+  } else if (currentPage == 5) {
+    drawPage5();
+  } else if (currentPage == 6) {
+    drawPage6();
+  } else if (currentPage == 7) {
+    drawPage7();
   }
 }
 
@@ -107,11 +130,38 @@ function drawPage2() {
 
 function drawPage3() {
   push();
-  background("black");
-  textAlign(CENTER, CENTER);
-  fill("white");
-  textSize(40);
-  text("Side 3", width / 2, height / 2 - 150);
+  background(247, 224, 181);
+  fill(209, 183, 134);
+  stroke(112, 95, 64);
+  strokeWeight(5);
+  rect(-10, -10, 370, 125);
+  image(billedeOverskrift, 75, 25, 200, 75);
+  textAlign(CENTER);
+  pop();
+}
+
+function drawPage4() {
+  push();
+
+  pop();
+}
+
+function drawPage5() {
+  push();
+
+  pop();
+}
+
+function drawPage6() {
+  push();
+
+  pop();
+}
+
+function drawPage7() {
+  push();
+
+  pop();
 }
 
 function drawWords() {
@@ -140,9 +190,20 @@ function knapTelefonKlik() {
   currentPage = 1;
 }
 
+// Event handler for knappen
 function knapBurgerikonKlik() {
   knapBurgerikon.hide();
   knapSOS.hide();
   knapTelefon.hide();
+  knapHjem.show();
   currentPage = 3;
+}
+
+// Event handler for knappen hjem
+function knapHjemKlik() {
+  knapBurgerikon.show();
+  knapSOS.show();
+  knapTelefon.hide();
+  knapHjem.hide();
+  currentPage = 1;
 }
