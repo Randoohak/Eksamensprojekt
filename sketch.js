@@ -1,3 +1,8 @@
+/*
+Eksamensprojekt af
+Rana og Cille
+*/
+
 // Globale variabler
 let billedeOverskrift;
 let billedeTelefonDerRinger;
