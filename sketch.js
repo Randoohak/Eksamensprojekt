@@ -1,8 +1,3 @@
-/*
-Eksamensprojekt af
-Rana og Cille
-*/
-
 // Globale variabler
 let billedeOverskrift;
 let billedeTelefonDerRinger;
@@ -10,12 +5,24 @@ let billedeBurgerikon;
 let billedeTelefon;
 let billedRødTelefon;
 let billedHjem;
+let billedeTests;
+let billedeIndstillinger;
+let billedeQuestion;
+let billedPhone;
+let billedeTest;
+let billedeSettings;
+let billedeHjælp;
 let font;
 let fontsize = 25;
+let fontsize2 = 15;
 let knapSOS;
 let knapTelefon;
 let knapBurgerikon;
 let knapHjem;
+let knapQuestion;
+let knapTests;
+let knapIndstillinger;
+let knapPhone;
 let currentPage = 1;
 let numberOfPages = 2;
 
@@ -27,6 +34,13 @@ function preload() {
   billedeTelefonDerRinger = loadImage("billeder/telefon_der_ringer.png");
   billedRødTelefon = loadImage("billeder/rød_telefon.png");
   billedHjem = loadImage("billeder/hjem.png");
+  billedeQuestion = loadImage("billeder/questionmark.png");
+  billedeTests = loadImage("billeder/tests.png");
+  billedeIndstillinger = loadImage("billeder/indstillinger.png");
+  billedPhone = loadImage("billeder/phone.png");
+  billedeTest = loadImage("billeder/test.png");
+  billedeSettings = loadImage("billeder/settings.png");
+  billedeHjælp = loadImage("billeder/hjælp.png");
 }
 
 //Alle knapper oprettes i samme funtion og gemmes, med undtagelse af knapSOS da den vises på forsiden
@@ -73,6 +87,62 @@ function opretKnapper() {
   knapHjem.style("background-size", "100% 100%");
   knapHjem.mousePressed(knapHjemKlik);
   knapHjem.hide();
+
+  knapHjem = createButton(" ");
+  knapHjem.position(width / 2 - 30, height - 100);
+  knapHjem.size(60, 60);
+  knapHjem.style("background-color", "transparent");
+  knapHjem.style("border", "none");
+  knapHjem.style("background-image", "url(" + "billeder/hjem.png" + ")");
+  knapHjem.style("background-size", "100% 100%");
+  knapHjem.mousePressed(knapHjemKlik);
+  knapHjem.hide();
+
+  knapQuestion = createButton(" ");
+  knapQuestion.position(15, 150);
+  knapQuestion.size(40, 40);
+  knapQuestion.style("background-color", "transparent");
+  knapQuestion.style("border", "none");
+  knapQuestion.style(
+    "background-image",
+    "url(" + "billeder/questionmark.png" + ")"
+  );
+  knapQuestion.style("background-size", "100% 100%");
+  knapQuestion.mousePressed(knapQuestionKlik);
+  knapQuestion.show();
+
+  knapTests = createButton(" ");
+  knapTests.position(15, 200);
+  knapTests.size(40, 40);
+  knapTests.style("background-color", "transparent");
+  knapTests.style("border", "none");
+  knapTests.style("background-image", "url(" + "billeder/tests.png" + ")");
+  knapTests.style("background-size", "100% 100%");
+  knapTests.mousePressed(knapTestsKlik);
+  knapTests.show();
+
+  knapIndstillinger = createButton(" ");
+  knapIndstillinger.position(15, 250);
+  knapIndstillinger.size(40, 40);
+  knapIndstillinger.style("background-color", "transparent");
+  knapIndstillinger.style("border", "none");
+  knapIndstillinger.style(
+    "background-image",
+    "url(" + "billeder/Indstillinger.png" + ")"
+  );
+  knapIndstillinger.style("background-size", "100% 100%");
+  knapIndstillinger.mousePressed(knapIndstillingerKlik);
+  knapIndstillinger.show();
+
+  knapPhone = createButton(" ");
+  knapPhone.position(15, 300);
+  knapPhone.size(40, 40);
+  knapPhone.style("background-color", "transparent");
+  knapPhone.style("border", "none");
+  knapPhone.style("background-image", "url(" + "billeder/phone.png" + ")");
+  knapPhone.style("background-size", "100% 100%");
+  knapPhone.mousePressed(knapPhoneKlik);
+  knapPhone.show();
 }
 
 function setup() {
@@ -124,6 +194,10 @@ function drawPage1() {
   //Kalder på drawWords funktionen for teksten
   drawWords(width * 30);
   pop();
+  knapQuestion.hide();
+  knapTests.hide();
+  knapIndstillinger.hide();
+  knapPhone.hide();
 }
 
 function drawPage2() {
@@ -150,31 +224,80 @@ function drawPage3() {
   rect(-10, -10, 370, 125);
   image(billedeOverskrift, 75, 25, 200, 75);
   textAlign(CENTER);
+  drawWords2(width * 30);
   pop();
 }
 
 function drawPage4() {
   push();
-
+  background(247, 224, 181);
+  fill(209, 183, 134);
+  stroke(112, 95, 64);
+  strokeWeight(5);
+  rect(-10, -10, 370, 125);
+  image(billedeOverskrift, 75, 25, 200, 75);
+  textAlign(CENTER);
+  drawWords3(width * 30);
   pop();
+  knapQuestion.hide();
+  knapTests.hide();
+  knapIndstillinger.hide();
+  knapPhone.hide();
+  knapBurgerikon.show();
 }
 
 function drawPage5() {
   push();
-
+  background(247, 224, 181);
+  fill(209, 183, 134);
+  stroke(112, 95, 64);
+  strokeWeight(5);
+  rect(-10, -10, 370, 125);
+  image(billedeOverskrift, 75, 25, 200, 75);
+  textAlign(CENTER);
+  image(billedeTest, 0, 0, 350, 500);
   pop();
+  knapQuestion.hide();
+  knapTests.hide();
+  knapIndstillinger.hide();
+  knapPhone.hide();
+  knapBurgerikon.show();
 }
 
 function drawPage6() {
   push();
-
+  background(247, 224, 181);
+  fill(209, 183, 134);
+  stroke(112, 95, 64);
+  strokeWeight(5);
+  rect(-10, -10, 370, 125);
+  image(billedeOverskrift, 75, 25, 200, 75);
+  textAlign(CENTER);
+  image(billedeSettings, 0, 0, 350, 500);
   pop();
+  knapQuestion.hide();
+  knapTests.hide();
+  knapIndstillinger.hide();
+  knapPhone.hide();
+  knapBurgerikon.show();
 }
 
 function drawPage7() {
   push();
-
+  background(247, 224, 181);
+  fill(209, 183, 134);
+  stroke(112, 95, 64);
+  strokeWeight(5);
+  rect(-10, -10, 370, 125);
+  image(billedeOverskrift, 75, 25, 200, 75);
+  textAlign(CENTER);
+  image(billedeHjælp, 0, 0, 350, 500);
   pop();
+  knapQuestion.hide();
+  knapTests.hide();
+  knapIndstillinger.hide();
+  knapPhone.hide();
+  knapBurgerikon.show();
 }
 
 //Tekst på forsiden
@@ -190,9 +313,92 @@ function drawWords() {
   text("selvmordslinjen nu", 175, 280);
 }
 
+//Tekst på side 3 (menuen)
+function drawWords2() {
+  fill(0);
+  noStroke();
+  text("Laes mere om...", 175, 170);
+  fill(0);
+  noStroke();
+  text("Tests", 112, 220);
+  fill(0);
+  noStroke();
+  text("Indstillinger", 147, 270);
+  fill(0);
+  noStroke();
+  text("Faa hjaelp", 142, 320);
+}
+
+//Tekst på side 4 (læs mere om...)
+function drawWords3() {
+  textSize(20);
+  fill(0);
+  noStroke();
+  text("Angst er", 70, 140);
+  fill(0);
+  noStroke();
+  text("Autisme er", 80, 200);
+  fill(0);
+  noStroke();
+  text("ADHD er", 67, 260);
+  fill(0);
+  noStroke();
+  text("Depression er", 95, 320);
+  textSize(10);
+  text(
+    "..en naturlig foelelse ligesom vrede, jalousi, glaede og andre foelelser.",
+    180,
+    160
+  );
+  text(
+    "Men for nogle løber angsten løbsk og udvikler sig til en sygdom.",
+    170,
+    170
+  );
+  text("Laes mere HER.", 280, 182);
+  text(
+    "..en udviklingsforstyrrelse. Personer med autisme har en anderledes",
+    180,
+    220
+  );
+  text(
+    "maade at opleve verden paa og kan have en nedsat evne til bl.a. at",
+    182,
+    230
+  );
+  text("saette sig ind i andre menneskers tanker.", 122, 240);
+  text("Laes mere HER.", 280, 242);
+  text(
+    "..en udviklingsforstyrrelse, hvor man har de typiske symptomer -",
+    175,
+    275
+  );
+  text(
+    "koncentrationsvanskeligheder, hyperaktivitet og impulsivitet.",
+    170,
+    285
+  );
+  text("Laes mere HER.", 280, 297);
+  text(
+    "en psykisk sygdom, der viser sig ved at man er vedvarende nedtrykt,",
+    185,
+    340
+  );
+  text(
+    "har nedsat lyst, energi og interesse, og er mere traet end normalt.",
+    180,
+    350
+  );
+  text("Laes mere HER.", 280, 362);
+}
+
 // Event handler for knapSOS
 function knapSOSKlik() {
   knapSOS.hide();
+  knapQuestion.hide();
+  knapTests.hide();
+  knapIndstillinger.hide();
+  knapPhone.hide();
   knapBurgerikon.hide();
   knapTelefon.show();
   currentPage = 2;
@@ -204,24 +410,60 @@ function knapTelefonKlik() {
   knapSOS.show();
   //Hver gang vi skifter side med en knap, bliver den brugte knap gemt, og den nye vist
   knapTelefon.hide();
+  knapQuestion.hide();
+  knapTests.hide();
+  knapIndstillinger.hide();
+  knapPhone.hide();
   knapBurgerikon.show();
   currentPage = 1;
 }
 
-// Event handler for knappen
+// Event handler for knapBurgerikon
 function knapBurgerikonKlik() {
   knapBurgerikon.hide();
   knapSOS.hide();
   knapTelefon.hide();
+  knapTests.show();
   knapHjem.show();
+  knapIndstillinger.show();
+  knapPhone.show();
+  knapQuestion.show();
   currentPage = 3;
 }
 
-// Event handler for knappen hjem
+// Event handler for knapHjem
 function knapHjemKlik() {
   knapBurgerikon.show();
   knapSOS.show();
   knapTelefon.hide();
   knapHjem.hide();
+  knapIndstillinger.hide();
+  knapPhone.hide();
+  knapQuestion.hide();
+  knapTests.hide();
   currentPage = 1;
+}
+
+//Event handler for knapQuestion
+function knapQuestionKlik() {
+  knapQuestion.hide();
+  currentPage = 4;
+}
+
+//Event handler for knapTests
+function knapTestsKlik() {
+  knapTests.hide();
+  currentPage = 5;
+}
+
+//Event handler for knapIndstillinger
+function knapIndstillingerKlik() {
+  knapIndstillinger.hide();
+  currentPage = 6;
+}
+
+//Event handler for knapPhone
+function knapPhoneKlik() {
+  knapPhone.hide();
+  currentPage = 7;
 }
