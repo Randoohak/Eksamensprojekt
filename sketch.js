@@ -193,6 +193,7 @@ function drawWords() {
 // Event handler for knapSOS
 function knapSOSKlik() {
   knapSOS.hide();
+  knapBurgerikon.hide();
   knapTelefon.show();
   currentPage = 2;
 }
@@ -203,6 +204,7 @@ function knapTelefonKlik() {
   knapSOS.show();
   //Hver gang vi skifter side med en knap, bliver den brugte knap gemt, og den nye vist
   knapTelefon.hide();
+  knapBurgerikon.show();
   currentPage = 1;
 }
 
