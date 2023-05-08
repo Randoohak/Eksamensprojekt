@@ -19,6 +19,7 @@ let knapHjem;
 let currentPage = 1;
 let numberOfPages = 2;
 
+//Load af alle billeder + skrifttype
 function preload() {
   font = loadFont("Traffolight.otf");
   billedeOverskrift = loadImage("billeder/titel.png");
@@ -28,10 +29,12 @@ function preload() {
   billedHjem = loadImage("billeder/hjem.png");
 }
 
+//Alle knapper oprettes i samme funtion og gemmes, med undtagelse af knapSOS da den vises på forsiden
 function opretKnapper() {
   knapSOS = createButton("SOS");
   knapSOS.position(150, 325);
   knapSOS.mousePressed(knapSOSKlik);
+  //Knap vises
   knapSOS.show();
 
   knapTelefon = createButton(" ");
@@ -45,6 +48,7 @@ function opretKnapper() {
   );
   knapTelefon.style("background-size", "100% 100%");
   knapTelefon.mousePressed(knapTelefonKlik);
+  //Knap gemmes
   knapTelefon.hide();
 
   knapBurgerikon = createButton(" ");
@@ -84,6 +88,7 @@ function setup() {
   opretKnapper();
 }
 
+//alle sider oprettes med side 1 som udgangspunkter
 function draw() {
   if (currentPage == 1) {
     drawPage1();
@@ -105,29 +110,37 @@ function draw() {
 }
 
 function drawPage1() {
+  //Grundkoden til alle sider undtagen side 2
   push();
   background(247, 224, 181);
+  //Rektangel til appens sidehoved
   fill(209, 183, 134);
   stroke(112, 95, 64);
   strokeWeight(5);
   rect(-10, -10, 370, 125);
+  //Vi kalder vores globale variabel som kalder det preloadede billede (vores logo)
   image(billedeOverskrift, 75, 25, 200, 75);
   textAlign(CENTER);
+  //Kalder på drawWords funktionen for teksten
   drawWords(width * 30);
   pop();
 }
 
 function drawPage2() {
   push();
+  //Den eneste side med anerledes baggrund til at vise 'opkaldet'
   background("black");
   textAlign(CENTER, CENTER);
+  //Fill og size til nummeret på selvmordslinien der vises på toppen af siden
   fill("white");
   textSize(40);
   text("70 20 12  01", width / 2, height / 2 - 150);
+  //Vi kalder vores globale variabel der kalder på det preloadede billede af 'læg på' knappen
   image(billedeTelefonDerRinger, width / 2 - 50, height / 2 - 50, 100, 100);
   pop();
 }
 
+//Menu
 function drawPage3() {
   push();
   background(247, 224, 181);
@@ -164,6 +177,7 @@ function drawPage7() {
   pop();
 }
 
+//Tekst på forsiden
 function drawWords() {
   fill(0);
   noStroke();
@@ -185,7 +199,9 @@ function knapSOSKlik() {
 
 // Event handler for knapTelefon
 function knapTelefonKlik() {
+  //Da vi har lavet alle vores knapper fra starten men gemt dem som udgangspunkt, har vi lavet en eventhandler til hver knap
   knapSOS.show();
+  //Hver gang vi skifter side med en knap, bliver den brugte knap gemt, og den nye vist
   knapTelefon.hide();
   currentPage = 1;
 }
