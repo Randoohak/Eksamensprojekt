@@ -24,7 +24,7 @@ let knapTests;
 let knapIndstillinger;
 let knapPhone;
 let currentPage = 1;
-let numberOfPages = 2;
+let numberOfPages = 7;
 
 //Load af alle billeder + skrifttype
 function preload() {
