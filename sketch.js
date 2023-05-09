@@ -51,6 +51,7 @@ function opretKnapper() {
   //Knap vises
   knapSOS.show();
 
+  //Her laver vi forskellige knapobjekter, og kalder diverse metoder på objektet
   knapTelefon = createButton(" ");
   knapTelefon.position(width / 2 - 50, height - 150);
   knapTelefon.size(100, 100);
@@ -77,16 +78,6 @@ function opretKnapper() {
   knapBurgerikon.style("background-size", "100% 100%");
   knapBurgerikon.mousePressed(knapBurgerikonKlik);
   knapBurgerikon.show();
-
-  knapHjem = createButton(" ");
-  knapHjem.position(width / 2 - 30, height - 150);
-  knapHjem.size(60, 60);
-  knapHjem.style("background-color", "transparent");
-  knapHjem.style("border", "none");
-  knapHjem.style("background-image", "url(" + "billeder/hjem.png" + ")");
-  knapHjem.style("background-size", "100% 100%");
-  knapHjem.mousePressed(knapHjemKlik);
-  knapHjem.hide();
 
   knapHjem = createButton(" ");
   knapHjem.position(width / 2 - 30, height - 100);
